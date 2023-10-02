@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        .more{width: 375px;
+           /* height: 400px; */
+           border: 1px solid black;
+         background-color: #d5c3c3;
+           /* text-align: center; */
+          /* line-height: 22px; */
+           margin: 128px 517px;
+        }
+        h2{text-align: center;
+        }
+        input{padding:5px 7px;
+               margin:5px;
+               border: none;
+               outline: none;
+               position: relative;
+        }
+        input:focus{  
+          border:none;
+          outline:none;
+
+        }
+        .run{width:50px;
+
+        }
+        .button{border: none;
+          padding: 10px 68px;
+          margin: 10px 45px;
+          background-color: green;
+          color: white;
+          border-radius: 8px;
+        }
+        .card{margin:10px;
+        }
+        .come{padding:10px 15px;
+        }
+        .file img{margin:3px;
+        }
+        .moto{padding: 5px 20px;
+              border: 1px solid gray;  
+        }
+        .file{position:relative; 
+        }
+        .span1{border:1px
+
+        }
+        
+    </style>
+</head>
+<body>
+ 
+    <h1>Credit Card Payment Geteway</h1>
+    <div class="more">
+    <form action=""name="payment">
+      <span
+      style="
+      display: block;
+      color: green;
+      text-align: center;"
+      class="successMsg"
+      >
+      
+    </span>
+        <h2>Payment Details</h2>
+        <div class="file">
+          <img src="/Users/admin/Downloads/Cards Logo/master-card-icon-11657.png"alt="mastar"style="width:70px;height:50px";>
+          <img src ="/Users/admin/Downloads/Cards Logo/Maestro-icon.png"alt= "maestro"style="width:70px;height:50px";>
+          <img src ="/Users/admin/Downloads/Cards Logo/206684_visa_method_card_payment_icon.png"alt="metro"style="width:70px;height:50px";>
+          <img src="/Users/admin/Downloads/Cards Logo/rupay-logo-icon.svg"alt="rupay"style="width:70px;height:50px";>
+        </div> 
+        <tr>
+         <tr> 
+          <th><label class="card">CARD NUMBER</label></th></tr><br>
+          <td>
+             <input class="file" type="tel"placeholder="place valid Number"maxlength="15"name="uname"><i class="fas fa-credit-card"></i><span class="span1"></span><br>
+             <span class="errorMsg" style="color: red;"></span><br/>
+           </td>
+          </tr>
+        <tr>
+          <td> <label class="card">EXPRIATION DATE</label></td><br>
+          <td> <input type="tel"placeholder="mm/yy" maxlength="5" class="help"required name="help"><span class="span2" style="color:red";></span><br/></td>
+        </tr>
+        <tr>
+           <td><label>CVV CODE</label><br/></td>
+           <td><input type="password"placeholder="CVC" class="run" maxlength="3"></td><br>
+        </tr>
+          <td><label class="card" for="">CARD OWNER</label></td><br>
+         <td><input  class="come"type="text"placeholder="Card Owner Name"><span class=span3 style="color: red;"></span></td><br>
+        </tr>
+             <button class="button"type="button">Conform Payment</button><p></p>
+        </table>
+    </form>
+    </div>
+    <script>
+      document.querySelector("input").addEventListener("input",function(e){
+        e.preventDefault();
+      let hum=/3|4|5|6/;
+      let val=this.value;
+      console.log("hitting")
+      if(isNaN(val)){
+        document.querySelector(".errorMsg").innerHTML = "Only number allowed";
+        document.querySelector("input").style="border:2px solid red";
+      }
+      else {
+        document.querySelector(".errorMsg").innerHTML = "";
+
+        if(this.value[0]=="3" &&  this.value.length =="15"){
+        document.querySelector(".span1").innerHTML=`<img src="/Users/admin/Downloads/Cards Logo/master-card-icon-11657.png"alt="mastar"style="width:40px;height:28px">`;
+        document.querySelector("i").style='opacity:0';
+        document.querySelector(".span1").style="display:inline-block";
+        document.querySelector("input").style="border:2px solid green";
+               
+      }
+      else if(this.value[0]=="4" &&  this.value.length =="15"){
+        document.querySelector(".span1").innerHTML=`<img src="/Users/admin/Downloads/Cards Logo/Maestro-icon.png"alt= "maestro"style="width:40px; height:28px">`;
+        document.querySelector("i").style='opacity:0';
+        document.querySelector(".span1").style="display:inline-block";
+        document.querySelector("input").style="border:2px solid green";
+
+      
+      }
+      else if(this.value[0]=="5" &&  this.value.length =="15"){
+        document.querySelector(".span1").innerHTML='<img src="/Users/admin/Downloads/Cards Logo/206684_visa_method_card_payment_icon.png"alt="metro"style="width:40px;height:29px>';
+        document.querySelector("i").style=`opacity:0`;
+        document.querySelector(".span1").style="display:inline-block";
+        document.querySelector("input").style="border:2px solid green";
+      }
+      else if(this.value[0]=="6" &&  this.value.length =="15"){
+        document.querySelector(".span1").innerHTML='<img src="/Users/admin/Downloads/Cards Logo/rupay-logo-icon.svg"alt="rupay"style="width:40px;height:30px>';
+        document.querySelector("i").style='opacity:0';
+        document.querySelector(".span1").style="display:inline-block";
+        document.querySelector("input").style="border:2px solid green";
+
+      }
+      else {
+        document.querySelector("input").style="border:2px solid red";
+      }
+      }
+
+
+
+      
+    
+    });
+    document.querySelector("input.help").addEventListener("input",function(e){
+        e.preventDefault()
+        let reg = /^[0-9]{5}$/
+        let val=this.value
+        // if(isNaN(val)){
+        //   document.querySelector(".span2").innerHTML="only number allow";
+          
+        // }
+        // else{
+        //   document.querySelector(".span2").innerHTML="";
+        // }
+        if( this.value.length=="5" ){
+        
+          document.querySelector("input.help").style.border="2px solid green";
+         
+        }
+        else {
+             document.querySelector("input.help").style.border="2px solid red";
+            
+      }
+    
+     
+
+    })
+       
+     document.querySelector("input.run").addEventListener("input",function(e){
+      e.preventDefault()
+      let reg=/^[0-9]{3}/
+      let val=this.value
+       if(this.value.length=="3"){
+        document.querySelector("input.run").style.border="2px solid green";
+       }
+       else{
+            document.querySelector("input.run").style.border="2px solid red";
+       }
+
+     }
+     )
+      document.querySelector("input.come").addEventListener("input",function(e){
+       e.preventDefault() 
+        let reg=/^[a-zA-Z]{6}/
+        let val=this.value
+        if(isNaN(this.value)==="true"){
+          // document.querySelector("input.span3").textContent="plece is only alfa";
+          documet.querySelector("input.come").style.border="2px solid red";
+
+        }
+        else {
+          document.querySelector("input.come").style.border="2px solid green";
+
+        }
+      
+        
+
+        
+      }
+      ) 
+     document.querySelector(".button").addEventListener("click",function(e){
+      // e.preventDefault();
+      if(document.querySelector("input").value == ""){
+        document.querySelector(".errorMsg").innerHTML = "This field is required";
+        document.querySelector("input").style="border:2px solid red";
+        document.querySelector("input").focus();
+      }
+      else if(document.querySelector("input.help").value == ""){
+        document.querySelector(".span2").innerHTML = "This field is required";
+        document.querySelector("input.help").style="border:2px solid red";
+        document.querySelector("input.help").focus();
+      }
+      else if(document.querySelector("input.run").value == ""){
+        document.querySelector("input.run").style="border:2px solid red";
+        document.querySelector("input.run").focus();
+      }
+      else if(document.querySelector("input.come").value == ""){
+        document.querySelector(".span3").innerHTML = "This field is required";
+        document.querySelector("input.come").style="border:2px solid red";
+        document.querySelector("input.come").focus();
+      }
+      else {
+        document.querySelector(".successMsg").innerHTML="Thank you for payment";
+      }
+      
+      //  document.querySelector(".button  p").style="display:block";
+      //  document.querySelector("i").style="opacity=1";
+      
+
+     }
+     )
+      
+
+       
+      
+      
+
+    
+      
+    
+      
+    </script>
+</body>
+</html>
